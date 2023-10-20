@@ -21,7 +21,7 @@ document
       .then((response) => response.json())
       .then((data) => {
         if (data.token) {
-          window.location.href = "reservas.html?token=" + data.token;
+          window.location.href = "../reservas/reservas.html?token=" + data.token;
         } else {
           alert("Credenciais inválidas. Por favor, tente novamente.");
         }
