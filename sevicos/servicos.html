@@ -17,17 +17,17 @@
     }
     .menu {
       display: flex;
-        flex-direction: column;
-
-        /* justify-content: space-between; */
-        height: 97.5vh;
-        background-color: #f0f0f0;
-        padding: 10px;
-        border-radius: 0px 21px 21px 0px;
-        background: var(--blue, #007aff);
-        margin-right: 370px;
-        position: fixed;
-        gap: 15px;
+      flex-direction: column;
+      /* align-items: center;
+      justify-content: space-between; */
+      height: 687px;
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 0 21px 21px 0;
+      background: var(--blue, #007AFF);
+      margin-right: 370px;
+      position: fixed;
+      gap: 15px;
     }
 
     .menu a {
@@ -180,7 +180,7 @@
       padding-top: 60px;
     }
 
-    #modalNovoServico .modal-content {
+    .modal-content {
       background-color: #FEF2F8;
       margin: 5% auto;
       padding: 20px;
@@ -190,7 +190,7 @@
       font-family: 'Inter', sans-serif;
       /* Largura da modal */
     }
-
+    
     #modalNovoServico .close {
       color: #aaa;
       float: right;
@@ -205,8 +205,8 @@
       cursor: pointer;
     }
 
-    #modalNovoServico input[type="text"],
-    #modalNovoServico input[type="number"] {
+    .modal-content input[type="text"],
+    .modal-content input[type="number"] {
     width: 420px;
     height: 20px;
     padding: 10px;
@@ -215,7 +215,7 @@
     border-radius: 10px;
     }
 
-    #modalNovoServico button {
+    .modal-content button {
       padding: 10px 20px;
       font-size: 18px;
       background-color: #007AFF;
@@ -362,7 +362,7 @@
         <input placeholder="Nome do serviço" type="text" id="nomeNovo" required><br>
 
         <label for="tipoServicoNovo"></label>
-        <select id="tipoServicoNovo" required>
+        <select class="input-modal-body" id="tipoServicoNovo" required>
             <option value="banho">Banho</option>
             <option value="tosa">Tosa</option>
             <option value="consulta">Consulta</option>
@@ -439,10 +439,9 @@
 
       modalContent.innerHTML = `
         <h2>Editar Serviço</h2>
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" value="${servico.nome}" required><br>
+        
+        <input type="text" placeholder="Nome" id="nome" value="${servico.nome}" required><br>
 
-        <label for="tipoServico">Tipo de Serviço:</label>
         <select id="tipoServico" required>
             <option value="banho" ${servico.tipo_servico === "banho" ? "selected" : ""
         }>Banho</option>
@@ -454,15 +453,13 @@
         }>Outros</option>
         </select><br>
 
-        <label for="valor">Valor:</label>
-        <input type="text" id="valor" value="${servico.valor}" required><br>
+        <input type="text" id="valor" placeholder="Valor" value="${servico.valor}" required><br>
 
-        <label for="tempoEstimado">Tempo Estimado:</label>
-        <input type="text" id="tempoEstimado" value="${servico.tempo_estimado
+      
+        <input type="text" placeholder="Tempo estimado" id="tempoEstimado" value="${servico.tempo_estimado
         }" required><br>
 
-        <label for="descontos">Descontos:</label>
-        <input type="text" id="descontos" value="${servico.descontos || ""
+        <input type="text" placeholder="Desconto" id="descontos" value="${servico.descontos || ""
         }"><br>
 
         <button onclick="confirmarEdicaoServico(${servico.id
